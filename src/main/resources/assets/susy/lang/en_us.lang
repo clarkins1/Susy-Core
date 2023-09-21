@@ -92,6 +92,10 @@ tile.home_block.home_renewal_brutalist.tooltip=Renewal Brutalist
 tile.home_block.home_scifi.name=Home Block
 tile.home_block.home_scifi.tooltip=Sci-Fi
 
+tile.biome_decorative.orange_clay.name=Orange Clay
+tile.biome_decorative.sulfur_deposit.name=Sulfur Deposit
+tile.black_sand.name=Black Sand
+
 # Rocks
 tile.susy_stone_smooth.gabbro.name=Gabbro
 tile.susy_stone_smooth.gneiss.name=Gneiss

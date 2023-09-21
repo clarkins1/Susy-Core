@@ -1,6 +1,5 @@
 package supersymmetry.common;
 
-import gregtech.api.GregTechAPI;
 import gregtech.api.block.VariantItemBlock;
 import gregtech.common.items.MetaItems;
 import net.minecraft.block.Block;
@@ -66,6 +65,8 @@ public class CommonProxy {
         registry.register(SuSyBlocks.ELECTRODE_ASSEMBLY);
         registry.register(SuSyBlocks.MULTIBLOCK_CASING);
         registry.register(SuSyBlocks.SERPENTINE);
+        registry.register(SuSyBlocks.BIOME_DECORATIVES);
+        registry.register(SuSyBlocks.BLACK_SAND);
 
         SHEETED_FRAMES.values().stream().distinct().forEach(registry::register);
     }
@@ -93,7 +94,8 @@ public class CommonProxy {
         registry.register(createItemBlock(SuSyBlocks.ELECTRODE_ASSEMBLY, VariantItemBlock::new));
         registry.register(createItemBlock(SuSyBlocks.MULTIBLOCK_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(SuSyBlocks.SERPENTINE, VariantItemBlock::new));
-
+        registry.register(createItemBlock(SuSyBlocks.BIOME_DECORATIVES, VariantItemBlock::new));
+        registry.register(createItemBlock(SuSyBlocks.BLACK_SAND, ItemBlock::new));
 
         SHEETED_FRAMES.values()
                 .stream().distinct()

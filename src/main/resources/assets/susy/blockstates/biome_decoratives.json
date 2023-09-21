@@ -1,0 +1,17 @@
+{
+  "forge_marker" : 1,
+  "variants" : {
+    "variant=sulfur_deposit" : {
+      "model" : "minecraft:cube_all",
+      "textures" : {
+        "all" : "gregtech:blocks/biome/sulfur_deposit"
+      }
+    },
+    "variant=orange_clay" : {
+      "model" : "minecraft:cube_all",
+      "textures" : {
+        "all" : "gregtech:blocks/biome/orange_clay"
+      }
+    }
+  }
+}
