@@ -24,7 +24,7 @@ public class BlockBiomeDecoratives extends VariantBlock<BlockBiomeDecoratives.Bi
     public static enum BiomeDecorativeType implements IStringSerializable, IStateHarvestLevel {
 
         SULFUR_DEPOSIT("sulfur_deposit", 1),
-        ORANGE_CLAY("orange_clay", 1);
+        RED_CLAY("red_clay", 1);
 
         private final String name;
         private final int harvestLevel;

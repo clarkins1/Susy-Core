@@ -7,10 +7,10 @@
         "all" : "gregtech:blocks/biome/sulfur_deposit"
       }
     },
-    "variant=orange_clay" : {
+    "variant=red_clay" : {
       "model" : "minecraft:cube_all",
       "textures" : {
-        "all" : "gregtech:blocks/biome/orange_clay"
+        "all" : "gregtech:blocks/biome/red_clay"
       }
     }
   }
