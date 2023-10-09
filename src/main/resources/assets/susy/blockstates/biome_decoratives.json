@@ -12,6 +12,12 @@
       "textures" : {
         "all" : "gregtech:blocks/biome/red_clay"
       }
+    },
+    "variant=peat" : {
+      "model" : "minecraft:cube_all",
+      "textures" : {
+        "all" : "gregtech:blocks/biome/peat"
+      }
     }
   }
 }
