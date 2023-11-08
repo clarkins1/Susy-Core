@@ -1,14 +1,20 @@
 package supersymmetry.common;
 
 import com.codetaylor.mc.pyrotech.modules.core.item.ItemMaterial;
+import com.codetaylor.mc.pyrotech.modules.tech.basic.event.RecipeRepeat;
 import gregtech.api.util.GTTeleporter;
 import gregtech.api.util.TeleportHandler;
 import gregtech.common.items.MetaItems;
 import gregtechfoodoption.item.GTFOMetaItem;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -17,7 +23,9 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import org.jetbrains.annotations.Nullable;
 import supersymmetry.Supersymmetry;
+import supersymmetry.client.audio.SusyCoreSounds;
 import supersymmetry.common.entities.EntityDropPod;
 
 @Mod.EventBusSubscriber(modid = Supersymmetry.MODID)
@@ -46,6 +54,33 @@ public class EventHandlers {
 
             event.player.addItemStackToInventory(GTFOMetaItem.EMERGENCY_RATIONS.getStackForm(10));
             event.player.addItemStackToInventory(MetaItems.PROSPECTOR_LV.getChargedStack(100000));
+        }
+    }
+
+    @Nullable
+    @SubscribeEvent
+    public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event)
+    {
+        // todo: is there a better way to detect stone type blocks? This seems like a hack
+        World world = event.getWorld();
+        BlockPos pos = event.getPos();
+        EnumFacing face = event.getFace();
+        EntityPlayer player = event.getEntityPlayer();
+        final IBlockState state = event.getWorld().getBlockState(event.getPos());
+        ItemStack stack = player.getHeldItemMainhand();
+        if (player.getActiveItemStack().getItem().equals(Items.FLINT) && state.getMaterial() == Material.ROCK) {
+            if (!world.isRemote) {
+                if (world.rand.nextFloat() < 0.33) {
+                    if (world.rand.nextFloat() < 0.9) {
+                        world.spawnEntity(new EntityItem(world, pos.getX() + 0.5 + 0.5 * face.getXOffset(),
+                                pos.getY() + 0.5 + 0.5 * face.getYOffset(),
+                                pos.getZ() + 0.5 + 0.5 * face.getZOffset(), ItemMaterial.EnumType.FLINT_SHARD.asStack(2)));
+                    }
+                    stack.shrink(1);
+                    player.setHeldItem(player.getActiveHand(), stack);
+                }
+                world.playSound(null, pos, SusyCoreSounds.KNAPPING, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            }
         }
     }
 

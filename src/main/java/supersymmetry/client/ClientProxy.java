@@ -17,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import supersymmetry.Supersymmetry;
 import supersymmetry.api.recipes.catalysts.CatalystGroup;
 import supersymmetry.api.recipes.catalysts.CatalystInfo;
+import supersymmetry.client.audio.SusyCoreSounds;
 import supersymmetry.common.CommonProxy;
 import supersymmetry.common.SusyMetaEntities;
 import supersymmetry.common.blocks.SheetedFrameItemBlock;
@@ -41,6 +42,7 @@ public class ClientProxy extends CommonProxy {
     public void load() {
         super.load();
         SuSyMetaBlocks.registerColors();
+        SusyCoreSounds.registerSounds();
     }
 
     @SubscribeEvent
