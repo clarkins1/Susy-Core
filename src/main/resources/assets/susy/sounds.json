@@ -16,5 +16,14 @@
         "stream": true
       }
     ]
+  },
+  "knapping": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "susy:knapping",
+        "stream": false
+      }
+    ]
   }
 }

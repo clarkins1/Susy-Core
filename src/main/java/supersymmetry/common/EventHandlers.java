@@ -11,6 +11,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -57,30 +58,33 @@ public class EventHandlers {
         }
     }
 
-    @Nullable
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event)
     {
-        // todo: is there a better way to detect stone type blocks? This seems like a hack
         World world = event.getWorld();
         BlockPos pos = event.getPos();
         EnumFacing face = event.getFace();
         EntityPlayer player = event.getEntityPlayer();
         final IBlockState state = event.getWorld().getBlockState(event.getPos());
         ItemStack stack = player.getHeldItemMainhand();
-        if (player.getActiveItemStack().getItem().equals(Items.FLINT) && state.getMaterial() == Material.ROCK) {
-            if (!world.isRemote) {
+        if (!world.isRemote && state.getMaterial() == Material.ROCK) {
+            checkKnapping(world, stack, player, pos, face, Items.FLINT, ItemMaterial.EnumType.FLINT_SHARD.asStack(2));
+            checkKnapping(world, stack, player, pos, face, Items.BONE, ItemMaterial.EnumType.BONE_SHARD.asStack(2));
+        }
+    }
+
+    private static void checkKnapping(World world, ItemStack stack, EntityPlayer player, BlockPos pos, EnumFacing face, Item input, ItemStack output) {
+        if (stack.getItem().equals(input)) {
                 if (world.rand.nextFloat() < 0.33) {
                     if (world.rand.nextFloat() < 0.9) {
                         world.spawnEntity(new EntityItem(world, pos.getX() + 0.5 + 0.5 * face.getXOffset(),
                                 pos.getY() + 0.5 + 0.5 * face.getYOffset(),
-                                pos.getZ() + 0.5 + 0.5 * face.getZOffset(), ItemMaterial.EnumType.FLINT_SHARD.asStack(2)));
+                                pos.getZ() + 0.5 + 0.5 * face.getZOffset(), output));
                     }
                     stack.shrink(1);
                     player.setHeldItem(player.getActiveHand(), stack);
                 }
-                world.playSound(null, pos, SusyCoreSounds.KNAPPING, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            }
+                world.playSound(null, pos, SusyCoreSounds.KNAPPING, SoundCategory.BLOCKS, (float) Math.random() + 0.5F, (float) Math.random() + 0.8F);
         }
     }
 
