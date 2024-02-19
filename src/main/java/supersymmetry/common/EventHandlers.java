@@ -1,48 +1,22 @@
 package supersymmetry.common;
 
-import com.alcatrazescapee.notreepunching.common.items.ItemCeramicBucket;
-import com.alcatrazescapee.notreepunching.common.items.ModItems;
 import gregtech.api.util.GTTeleporter;
 import gregtech.api.util.TeleportHandler;
 import gregtech.common.items.MetaItems;
 import gregtechfoodoption.item.GTFOMetaItem;
-import net.minecraft.block.BlockCauldron;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.management.PlayerList;
-import net.minecraft.stats.StatList;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import net.minecraftforge.event.entity.player.FillBucketEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidUtil;
-import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import supersymmetry.Supersymmetry;
-import supersymmetry.api.SusyLog;
-import supersymmetry.api.event.MobHordeEvent;
 import supersymmetry.common.entities.EntityDropPod;
-import supersymmetry.common.event.MobHordePlayerData;
 import supersymmetry.common.event.MobHordeWorldData;
-
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Mod.EventBusSubscriber(modid = Supersymmetry.MODID)
 public class EventHandlers {
@@ -76,9 +50,11 @@ public class EventHandlers {
 
     }
 
-    @SubscribeEvent
+    // Commented this out as pyrotech will replace NTP
+
+    /*@SubscribeEvent
     @SuppressWarnings("all")
-    public static void onPlayerLeftClick(PlayerInteractEvent.RightClickBlock event) {
+    public static void onPlayerRightClick(PlayerInteractEvent.RightClickBlock event) {
         ItemStack itemStack = event.getItemStack();
         World world = event.getWorld();
         BlockPos pos = event.getPos();
@@ -122,7 +98,7 @@ public class EventHandlers {
             event.setCanceled(true);
             cancelFillBucket = false;
         }
-    }
+    }*/
 
     @SubscribeEvent
     public static void onTrySpawnPortal(BlockEvent.PortalSpawnEvent event) {
