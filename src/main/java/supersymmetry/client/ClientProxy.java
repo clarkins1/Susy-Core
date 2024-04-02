@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
-import supersymmetry.Supersymmetry;
+import supersymmetry.SuSyValues;
 import supersymmetry.api.recipes.catalysts.CatalystGroup;
 import supersymmetry.api.recipes.catalysts.CatalystInfo;
 import supersymmetry.common.CommonProxy;
@@ -30,7 +30,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = Supersymmetry.MODID, value = Side.CLIENT)
+@Mod.EventBusSubscriber(modid = SuSyValues.MODID, value = Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 
     public void preLoad() {

@@ -21,17 +21,16 @@ import supersymmetry.common.metatileentities.SuSyMetaTileEntities;
 import gregtech.GTInternalTags;
 import supersymmetry.loaders.SuSyIRLoader;
 
-@Mod(name = Supersymmetry.NAME, modid = Supersymmetry.MODID, version = Tags.VERSION, dependencies = GTInternalTags.DEP_VERSION_STRING + ";required-after:gcym;after:immersiverailroading")
+@Mod(name = Supersymmetry.NAME, modid = SuSyValues.MODID, version = Tags.VERSION, dependencies = GTInternalTags.DEP_VERSION_STRING + ";required-after:gcym;after:immersiverailroading")
 
 public class Supersymmetry {
 
     public static final String NAME = "Supersymmetry";
-    public static final String MODID = "susy";
 
-    @SidedProxy(modId = MODID, clientSide = "supersymmetry.client.ClientProxy", serverSide = "supersymmetry.common.CommonProxy")
+    @SidedProxy(modId = SuSyValues.MODID, clientSide = "supersymmetry.client.ClientProxy", serverSide = "supersymmetry.common.CommonProxy")
     public static CommonProxy proxy;
 
-    @Mod.Instance(Supersymmetry.MODID)
+    @Mod.Instance(SuSyValues.MODID)
     public static Supersymmetry instance;
 
     @Mod.EventHandler

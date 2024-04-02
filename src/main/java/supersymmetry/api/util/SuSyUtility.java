@@ -2,7 +2,7 @@ package supersymmetry.api.util;
 
 import gregtech.api.GTValues;
 import net.minecraft.util.ResourceLocation;
-import supersymmetry.Supersymmetry;
+import supersymmetry.SuSyValues;
 
 import java.util.function.Function;
 
@@ -45,6 +45,6 @@ public class SuSyUtility {
     };
 
     public static ResourceLocation susyId(String path) {
-        return new ResourceLocation(Supersymmetry.MODID, path);
+        return new ResourceLocation(SuSyValues.MODID, path);
     }
 }

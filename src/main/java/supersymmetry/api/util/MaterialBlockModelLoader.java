@@ -29,14 +29,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
-import supersymmetry.Supersymmetry;
+import supersymmetry.SuSyValues;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.Objects;
 
-@Mod.EventBusSubscriber(modid = Supersymmetry.MODID, value = Side.CLIENT)
+@Mod.EventBusSubscriber(modid = SuSyValues.MODID, value = Side.CLIENT)
 public class MaterialBlockModelLoader {
     private static final Table<MaterialIconType, MaterialIconSet, ResourceLocation> BLOCKSTATES_CACHE = HashBasedTable.create();
 

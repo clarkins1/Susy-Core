@@ -6,7 +6,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.MapStorage;
 import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.common.util.Constants;
-import supersymmetry.Supersymmetry;
+import supersymmetry.SuSyValues;
 
 import javax.annotation.Nonnull;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ import java.util.function.Function;
 public class MobHordeWorldData extends WorldSavedData
         implements Function<UUID, MobHordePlayerData> {
 
-    private static final String DATA_NAME = Supersymmetry.MODID + "_InvasionData";
+    private static final String DATA_NAME = SuSyValues.MODID + "_InvasionData";
     private final Map<UUID, MobHordePlayerData> playerDataMap;
 
     public MobHordeWorldData() {
