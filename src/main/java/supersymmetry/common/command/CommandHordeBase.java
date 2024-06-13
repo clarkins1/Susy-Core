@@ -36,6 +36,12 @@ public class CommandHordeBase extends CommandTreeBase {
 
     @Override
     public int getRequiredPermissionLevel() {
-        return 2;
+        return 0;
     }
+
+    @Override
+    public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
+        return super.checkPermission(server, sender) || server.isSinglePlayer();
+    }
+
 }

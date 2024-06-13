@@ -14,7 +14,7 @@ import supersymmetry.common.entities.EntityDropPod;
 public class SusyMetaEntities {
 
     public static void init() {
-        EntityRegistry.registerModEntity(new ResourceLocation(Supersymmetry.MODID, "drop_pod"), EntityDropPod.class, "Drop Pod", 1, Supersymmetry.instance, 64, 3, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(Supersymmetry.MODID, "drop_pod"), EntityDropPod.class, "drop_pod", 1, Supersymmetry.instance, 64, 3, true);
         EntityRegistry.registerModEntity(new ResourceLocation(Supersymmetry.MODID, "drone"), EntityDrone.class, "Drone", 2, Supersymmetry.instance, 64, 3, true);
     }
 

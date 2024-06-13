@@ -128,6 +128,10 @@ tile.susy_stone_bricks.slate.name=Slate Bricks
 tile.susy_stone_bricks.soapstone.name=Soapstone Bricks
 tile.susy_stone_bricks.kimberlite.name=Kimberlite Bricks
 
+# Entities
+
+entity.drop_pod.name=Drop Pod
+
 # Materials
 susy.material.manganese_iron_arsenic_phosphide=Manganese Iron Arsenic Phosphide
 susy.material.praseodymium_nickel=Praseodymium-Nickel

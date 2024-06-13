@@ -52,4 +52,14 @@ public class CommandHordeStatus extends CommandBase {
             }
         }
     }
+
+    @Override
+    public int getRequiredPermissionLevel() {
+        return 0;
+    }
+
+    @Override
+    public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
+        return super.checkPermission(server, sender) || server.isSinglePlayer();
+    }
 }

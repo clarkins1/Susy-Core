@@ -49,4 +49,9 @@ public class CommandHordeStop extends CommandBase {
         }
     }
 
+    @Override
+    public int getRequiredPermissionLevel() {
+        return 2;
+    }
+
 }

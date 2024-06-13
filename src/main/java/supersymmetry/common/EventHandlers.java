@@ -8,9 +8,7 @@ import gregtech.common.items.MetaItems;
 import gregtechfoodoption.item.GTFOMetaItem;
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -19,7 +17,6 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
@@ -34,15 +31,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import supersymmetry.Supersymmetry;
-import supersymmetry.api.SusyLog;
-import supersymmetry.api.event.MobHordeEvent;
 import supersymmetry.common.entities.EntityDropPod;
-import supersymmetry.common.event.MobHordePlayerData;
 import supersymmetry.common.event.MobHordeWorldData;
-
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Mod.EventBusSubscriber(modid = Supersymmetry.MODID)
 public class EventHandlers {
