@@ -1,0 +1,75 @@
+import com.google.gson.*
+
+int[] forbiddenMods = [346326, 300957, 291249, 348025, 377201, 846224, 242818, 557242, 564858, 388172, 648514, 220318, 477021, 224472, 289043, 304493, 371784, 282613, 277736, 267602, 687577, 624243, 239197, 245211, 557549, 319175, 229876, 283525, 60089, 257356, 76544]
+ // Mods with disabled third-party downloads, implemented deps, and SusyCore itself
+
+tasks.register("getModpackDependencies") {
+    group = 'Modpack development'
+    description = 'Runs the modpack on the client'
+    doFirst {
+        String link =
+                "https://raw.githubusercontent.com/SymmetricDevs/Supersymmetry/master-ceu/manifest.json";
+        URL url = new URL(link);
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+        Map<String, List<String>> header = http.getHeaderFields();
+        while (isRedirected(header)) {
+            link = header.get("Location").get(0);
+            url = new URL(link);
+            http = (HttpURLConnection) url.openConnection();
+            header = http.getHeaderFields();
+        }
+
+        JsonArray mods = JsonParser.parseReader(new InputStreamReader(http.getInputStream())).getAsJsonObject().get("files").getAsJsonArray()
+        for (int i = 0; i < mods.size(); i++) {
+            JsonObject mod = mods.get(i).getAsJsonObject()
+            if (forbiddenMods.contains(mod.get("projectID").getAsInt())) continue
+            String dep = "curse.maven:" + i + "-" + mod.get("projectID") + ":" + mod.get("fileID")
+            dependencies {
+                runtimeOnly rfg.deobf(dep)
+            }
+        }
+    }
+}
+
+tasks.register("runClientModpack") {
+    group = 'Modpack development'
+    description = 'Runs the modpack on the client'
+    dependsOn getModpackDependencies
+    dependsOn runClient
+}
+
+boolean isRedirected(Map<String, List<String>> header) {
+    for (String hv : header.get(null)) {
+        if (hv.contains(" 301 ")
+                || hv.contains(" 302 ")) return true;
+    }
+    return false;
+}
+
+extractDependencyATs.configure {
+    mustRunAfter getModpackDependencies
+}
+
+/*
+String link =
+        "https://raw.githubusercontent.com/SymmetricDevs/Supersymmetry/master-ceu/manifest.json";
+URL url = new URL(link);
+HttpURLConnection http = (HttpURLConnection) url.openConnection();
+Map<String, List<String>> header = http.getHeaderFields();
+while (isRedirected(header)) {
+    link = header.get("Location").get(0);
+    url = new URL(link);
+    http = (HttpURLConnection) url.openConnection();
+    header = http.getHeaderFields();
+}
+
+JsonArray mods = JsonParser.parseReader(new InputStreamReader(http.getInputStream())).getAsJsonObject().get("files").getAsJsonArray()
+for (int i = 0; i < mods.size(); i++) {
+    JsonObject mod = mods.get(i).getAsJsonObject()
+    if (forbiddenMods.contains(mod.get("projectID").getAsInt())) continue
+    String dep = "curse.maven:" + i + "-" + mod.get("projectID") + ":" + mod.get("fileID")
+    dependencies {
+        runtimeOnly rfg.deobf(dep)
+    }
+}
+*/
